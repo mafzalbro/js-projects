@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Fetch</title>
+</head>
+<body>
+    
+    <div id="json">
+
+    </div>
+
+    <script>
+        fetch('https://sheetdb.io/api/v1/r01di5q6aibb7')
+        .then(res=>res.json()).then(data=> {
+            json.innerHTML = JSON.stringify(data);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files Course</title>
+    <style>
+        .container{display: flex; flex-wrap: wrap;margin-top: 50px;}
+        div.box-div{width: calc(25% - 20px);height: fit-content;margin: 20px 10px; overflow: hidden;}
+        img{width: 100%;border-radius: 10px;}
+        input{background: cyan; width: 100%;padding: 20px; height: 0; width: 0;pointer-events: none;visibility: hidden;}
+        a{display: block; width: 100%; background: #333; color: aliceblue; padding: 10px;text-align: center;}
+        .btn-pick{background: black; color: aliceblue; padding: 10px; border: 0; outline: 0; cursor: pointer;}
+
+    </style>
+</head>
+<body>
+    <h2>Hey, This is breif Explanation of Files with the help of mini project which pick with custom selection which shows download button for your images!</h2>
+    <input type="file" id="input" multiple accept=".png, .jpg">
+    <button class="btn-pick">Pick</button>
+    <div class="container">
+
+    </div>
+    <script>
+        const input = document.querySelector('input');
+        const container = document.querySelector('.container');
+        const btnToPick = document.querySelector('.btn-pick');
+        
+        input.addEventListener('change',()=>{
+            const files = input.files;
+            for (const file of files) {
+                // console.log(file);
+                
+                const url = URL.createObjectURL(file);
+                
+                const img = new Image();
+                img.src = url;
+
+                // -- edited version
+                // img.style.filter = 'saturate(200%)';
+                
+                // -- You have to use canvas to download the edited version my dear?
+                const a = document.createElement('a');
+                a.textContent = "Download This Image"
+                a.href = url;
+                a.download = img.name;
+                
+                const boxDiv = document.createElement('div');
+
+                boxDiv.className = ['box-div'];
+                
+                img.onload = () => {
+                    container.prepend(boxDiv);
+                    boxDiv.append(img);
+                    boxDiv.insertAdjacentElement('beforeend', a);
+                }
+
+            }
+        })
+        
+        const selectBtnFiles = ()=>{
+            input.click();
+            // if(input.type == 'click') element.preventDefault();
+            // 2. input.files[0].name //for info
+            // 3. to hide you can't use display hidden as it will totally hiden
+        }
+
+        btnToPick.addEventListener('click', selectBtnFiles);
+    </script>
+</body>
+</html>

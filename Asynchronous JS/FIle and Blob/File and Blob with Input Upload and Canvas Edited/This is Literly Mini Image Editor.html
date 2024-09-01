@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files and Blobs in JS Fetch Function</title>
+    <style>
+    img{width: 33%;object-fit: cover;display: inline-block;border-radius: 10px;margin: 20px;}
+    a{display: block; background: #333; color: aliceblue; padding: 10px;text-align: center;}
+    </style>
+</head>
+<body>
+    <h1>Files and Blobs in JS Fetch Function</h1>
+<!-- this was the way to create file blog and url of file -->
+    <!-- <img src="assets/ali.jpg" alt="">
+<a class="a">Download</a>
+<a class="a1">Download</a> -->
+
+    <!-- <script>
+        const a = document.querySelector('.a');
+        fetch('assets/ali.jpg')
+        .then(res=> res.blob())
+        .then(blob=>{
+    // creating file from blob
+            const file = new File([blob],'jpg',{type:blob.type})
+            // console.log(file);
+            // console.log(blob);
+            // FileReader();
+    //create URL
+            const url = URL.createObjectURL(file);
+            console.log(url);
+    //create anchor
+            a.href = url;
+            a.download = 'name';
+
+        }).catch((err)=> console.log(err))
+    </script>
+    <script>
+        const a1 = document.querySelector('.a1');
+        const str = "This is string hai sb"
+        const blob = new Blob([str],{type:'text/plain'});
+        // console.log(blob);
+        //create URL
+        const url = URL.createObjectURL(blob);
+        console.log(url);
+        //create Link
+        a1.href = url;
+        a1.download = 'name.txt';
+        
+
+    </script> -->
+
+    <!-- Now it is time to get file upload and get file info -->
+
+    <input type="file" class="upload" >
+    <!-- <a href="" id="btn">Download Edited Image</a> -->
+    <div class="image-box">
+
+    </div>
+
+    <script>
+        const input = document.querySelector('input.upload');
+        const a = document.querySelector('#btn');
+        const imgArea = document.querySelector('.image-box');
+        
+        // if(input.files.length == 0){ a.style.display = 'none'}
+        
+        
+        input.addEventListener('change',()=>{
+            
+            // if(input.files.length != 0){ a.style.display = 'block'}
+            
+            const file = input.files[0];
+                
+            const url = URL.createObjectURL(file)
+            const img = new Image();
+            img.src = url;
+
+            img.onload=()=>{
+                imgArea.prepend(img);
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+
+                canvas.height = img.naturalHeight;
+                canvas.width = img.naturalWidth;
+
+                ctx.filter = 'sepia(1)';
+                ctx.drawImage(img,0,0);
+                
+                canvas.toBlob((blobData)=>{
+                    const newURL = URL.createObjectURL(blobData);
+                    const newImg = new Image(); 
+                    newImg.src = newURL;
+
+                    const a = document.createElement('a');
+                    a.textContent = `Download This Image`
+                    
+                    a.href = newURL;
+                    a.download = newImg.name; 
+
+                    newImg.onload = () => {
+                        imgArea.prepend(newImg);
+                        imgArea.prepend(a);
+                    }
+                })
+
+            }
+        })
+    </script>
+
+    <!--This garbage or hit & trails method-->
+    <!-- <script>
+        const uploadedFile = document.querySelector('input.upload')
+        // // console.log(uploadedFile);
+        uploadedFile.addEventListener('change',()=>{
+
+
+            //1. inspect user file
+            file = uploadedFile.files[0]
+            // getImage(file);
+            //2. Create URL
+            // const url = URL.createObjectURL(file)
+            // console.log(url);
+            // //3. Display It
+            // const image = document.createElement('img');
+            // image.src = url;
+            // document.body.appendChild(image);
+            // localStorage.setItem('image',image);
+            
+            
+            
+        // 4. Create canvas and appear here
+
+        // fetch('assets/afzal.jpg')
+        // .then(res=> res.blob())
+        // .then(blob=> getImage(blob))
+
+    //   const getImage = (blob) => {
+        // console.log(blob);
+        const url = URL.createObjectURL(file); //if fetch use blob here
+        const image = new Image();
+        image.src = url;
+        image.onload = ()=>{
+            document.body.appendChild(image);
+            
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+        
+            canvas.height = image.naturalHeight;
+        canvas.width = image.naturalWidth;
+
+        ctx.filter = 'sepia(1)';
+        ctx.drawImage(image, 0, 0);
+
+        canvas.toBlob((newBlob) => {
+            console.log(newBlob);
+            const newURL = URL.createObjectURL(newBlob);
+            imgDownload(newURL);
+            const newImg = new Image();
+            newImg.src = newURL;
+
+            newImg.onload = () =>{
+                document.body.appendChild(newImg);
+                console.log(newURL);
+            }
+        })
+        // }
+        // canvas.toDataURL();
+    }
+    const a = document.querySelector('a#btn');
+        imgDownload=(newURL)=>{
+            a.href= newURL;
+            a.download = '';
+        }
+    
+});
+        // //--------Get from local storage and display
+
+        // displayImage = localStorage.getItem('image');
+
+        // displayImage
+
+        // dImage = document.createElement('img');
+        // dImage.src = displayImage;
+        // document.body.appendChild(dImage)
+
+    </script> -->
+</body>
+</html>

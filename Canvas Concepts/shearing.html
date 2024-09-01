@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canvas Shearing Example</title>
+<style>
+  canvas {
+    border: 1px solid black;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="myCanvas" width="400" height="200"></canvas>
+
+<script>
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // Original rectangle
+  ctx.fillStyle = 'blue';
+  ctx.fillRect(50, 50, 100, 50);
+  ctx.fillText('Original rectangle', 60, 130);
+
+  // Apply shearing transformation
+  ctx.transform(1, 0.5, 0, 1, 0, 0); // Shear along the x-axis
+  ctx.fillStyle = 'red';
+  ctx.fillRect(200, -20, 100, 50); // Sheared rectangle
+
+  // Restore default transformation (optional)
+  // ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transformation matrix
+
+  // Text
+  ctx.fillStyle = 'black';
+  ctx.fillText('Sheared rectangle', 200, 50);
+
+</script>
+
+</body>
+</html>

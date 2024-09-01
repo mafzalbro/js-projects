@@ -1,0 +1,73 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Div to Image</title>
+</head>
+<body>
+
+    
+    <canvas id="canvas">
+        <div class="capture">
+            <h1>Headings get Img</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A libero corporis error, consequatur nostrum facere.</p>
+        </div>        
+    </canvas>
+
+    <img class="img" src="" alt="" srcset="">
+
+    <script src="script.js"></script>
+
+    <button id="captureButton">Capture</button>
+
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+
+  </head>
+  <body>
+    <div id="imageDIV">
+      This is just a test<br />
+      12344<br />
+    </div>
+    <div id="previewImage"> Preview Here! </div>
+    <a href="" id="download">Save</a>
+    
+    <script>
+      var element = $("#imageDIV"); // global variable
+      var getCanvas; // global variable
+      $("document").ready(function () {
+        html2canvas(element, {
+          onrendered: function (canvas) {
+            $("#previewImage").append(canvas);
+            getCanvas = canvas;
+          },
+        });
+      });
+      $("#download").on("click", function () {
+        var imageData = getCanvas.toDataURL("image/png");
+        // Now browser starts downloading it instead of just showing it
+        var newData = imageData.replace(
+          /^data:image\/png/,
+          "data:application/octet-stream"
+        );
+        $("#downlaod").attr("href", imageData)
+        $("#download").attr("download", "image.jpg");
+      });
+      </script>
+  </body>
+</html>

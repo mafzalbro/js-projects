@@ -1,0 +1,8 @@
+.capture,#imageDIV,.img{
+    background: red;
+    height: 240px;
+    width: 360px;
+    margin: 10px;
+    padding: 10px;
+}
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>popover and popovertarget</title>
+    <style>
+        [popover]{
+            inset: unset;
+            bottom: anchor(top);
+            left: anchor(center);
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <button popovertarget="content" id="btn">popover</button>
+    
+    <div id="content" popover anchor="btn"> 
+        This is content!
+    </div>
+
+</body>
+</html>

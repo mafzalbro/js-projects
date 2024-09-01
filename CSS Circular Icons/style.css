@@ -1,0 +1,73 @@
+*,body{
+    margin: 0;
+    padding: 0;  
+    box-sizing: border-box;
+    font-size: 1.5rem;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+.main-wrapper{
+    background: black;
+    color: white;
+    height: 100vh;
+}
+.circle-shape{
+    border-radius: 50%;
+}
+.circle-wrapper{
+    height: 300px;
+    width: 300px;
+    position: relative;
+}
+
+#toggle-btn{
+    background: #dc143c;
+    position: absolute;
+    z-index: 1;
+    height: 100px;
+    width: 100px;
+    transform: rotate(0deg);
+    transition: all 0.5s;
+    cursor: pointer;
+}
+#toggle-btn.active{
+    transform: rotate(315deg);
+}
+
+#toggle-btn ~ .btn a{
+    transform: rotate(calc(360deg / -6 * var(--i)));
+    color: white;
+    text-decoration: none;
+}
+
+#toggle-btn ~ .btn{
+    background: orange;
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    left: 0;
+    cursor: pointer;
+    list-style: none;
+    transform-origin: 150px;
+    transition: 0.5s;
+    transform: rotate(0deg) translateX(100px);
+    transition-delay: calc(0.1s * var(--i));
+}
+#toggle-btn.active ~ .btn{
+    transform: rotate(calc(360deg / 6 * var(--i)));
+}
+
+/*
+What I did?
+1. add style = '--i:1' it can 1,2,3...n to all buttons or uls
+2. add transform: rotate(calc(360deg / 4 * var(--i))) to all btns
+3. also transitions and transition-delay to it
+4. add transform: rotate(calc(360deg / -4 * var(--i))); to content inside button
+5. add active class toggle using JS
+*/

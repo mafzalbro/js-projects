@@ -1,0 +1,28 @@
+body{
+    font-family: poppins;
+}
+
+.swiper {
+    width: 600px;
+    height: auto;
+  }
+
+.swiper::-webkit-scrollbar-x{
+    display: block;
+}
+  
+.swiper .card{
+    width: 300px;
+    background: #eee;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 10px;
+    width: 300px;
+}
+.card .thumbnail img{
+    width: 100%;
+    object-fit: cover;
+}
+.card .description{
+    padding: 20px;
+}

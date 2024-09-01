@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome Dev Tools: Console</title>
+</head>
+<body>
+    <h1>Chrome Dev Tools: Console</h1>
+    <button id='btn'>Click Here</button>
+    <script>
+        //-----------------------------------------------------------------
+        // monitorEvents(element, event) e.g. (document.body,'click') in console can replacement of following...
+        btn.addEventListener('click',()=>{
+            const mouseEvent = new MouseEvent(onclick);
+            console.log("Btn's " , mouseEvent);
+            event.stopPropagation();
+        },false);
+        window.addEventListener('click',()=>{
+            const mouseEvent = new MouseEvent(onclick);
+            console.log(mouseEvent);
+        });
+
+        //-----------------------------------------------------------------
+        //Currying 
+        function afunc(a){
+            return function bfunc(b){
+                return function cfunc(c){
+                    return a+b+c;
+                }
+            }
+        }
+        // console.trace(afunc());
+
+        let addFunc = afunc(1)(2)(3);
+        console.log("Addition is ", addFunc);
+        //------------------------------------------------------------------
+        
+        function afunc1(){
+            function bfunc1(){
+                function cfunc1(){
+                    console.trace(afunc1);
+                    // return a+b+c;
+                }
+                cfunc1();
+            }
+            bfunc1()
+        }
+        
+        let addFunc1 = afunc1();
+        var name = "Ali";
+        // console.warn
+        // console.log
+        // console.error
+        // console.group
+        // console.groupEnd
+        // console.time
+        // console.timeEnd
+        // console.trace(name); //to check call stack
+        // console.dir
+        // console.info
+        console.assert //testing the message if right,gives undefined and if wrong gives error
+        console.group('G');
+        for (let i = 0; i < 5; i++) {
+            console.log(i * 4);
+        }
+        console.groupEnd('G');
+
+        console.group('G2');
+        for (let i = 0; i < 5; i++) {
+            console.log(i * 8);
+        }
+        console.groupEnd('G2');
+        
+        
+        console.time('t'); // e.g. it will be as --> t: 2.0 ms
+        for (let i = 0; i < 5; i++) {
+            console.log(i * 32, "time taken to do that");
+        }
+        console.timeEnd('t');
+
+
+
+
+
+
+
+        var h1 = document.querySelector('h1');
+        // let num = 10;
+        // let names = ['afzal','ali'];
+        console.assert(h1,h1.textContent);
+        
+    </script>
+
+    
+</body>
+</html>

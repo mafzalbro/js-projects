@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body{
+    font-family: poppins;
+}
+
+p{
+    padding: 5px 100px;
+    font-weight: 300;
+    
+}
+
+.draggable-cform{
+    background-color: antiquewhite;
+    width: 300px;
+    height: 470px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    z-index: 1;
+    display: none;
+    box-shadow: 1px 3px 40px -8px #333;
+}
+.draggable-cform.active{
+    display: block;
+    right: 80px;
+    bottom: 80px;
+}
+.draggable-cform form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.draggable-cform form input, .draggable-cform form textarea{
+    margin: 10px;
+    padding: 8px 20px;
+    background-color: aliceblue;
+    stroke: none;
+    border: none;
+    resize: none;
+    border-radius: 20px;
+}
+.draggable-cform input[type = "submit"]:hover{background-color: yellow}
+.draggable-cform input[type = "submit"]{background-color: yellow;color:red;cursor: pointer;border-radius: 20px; font-family: poppins;}
+
+.contact-icon{
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    padding: 20px;
+    border-radius: 50px;
+    background-color: yellow;
+    cursor: pointer;
+}
+
+.drag-icon{
+    background: yellow;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+    padding:10px;
+    cursor: pointer;
+}

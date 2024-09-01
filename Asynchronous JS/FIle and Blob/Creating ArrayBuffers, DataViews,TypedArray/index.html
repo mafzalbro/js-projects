@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArrayBuffer, DataView, TypedArray</title>
+</head>
+<body>
+    <h1>ArrayBuffer, DataView, TypedArray</h1>
+
+    <script>
+        const ab = new ArrayBuffer(16);
+        console.log(ab);
+        const dv1 = new DataView(ab);
+        const dv2 = new DataView(ab,10,3);
+        dv1.setInt8(11,42); //*
+        dv1.setInt8(4,103); // g
+        console.log(dv1);
+
+        console.log(dv2.getInt16(ab)) //42
+
+        // console.log(new Uint16Array(ab).toString());
+
+
+        const file = new File([ab],'file.txt',{type: 'text/plain'});
+
+        const url = URL.createObjectURL(file)
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.textContent = `Download ${file.name}`
+
+        a.download = file.name;
+
+        document.body.append(a)
+        console.log(file);
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body{
+    font-family: poppins;
+}
+
+.paras p{
+    padding: 5px 100px;
+    font-weight: 300;
+    
+}
+
+.draggable-div{
+    background-color: antiquewhite;
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 20px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    box-shadow: 1px 3px 40px -8px #333;
+}
+
+
+.drag-div{
+    background: yellow;
+    text-align: center;
+    padding:10px;}

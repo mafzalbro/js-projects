@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Create Request Object</title>
+    
+    
+</head>
+<body>
+    <h1>How to Create Request Object</h1>
+
+    <script>
+        //Request Method works with online URL to upload data like json
+        let str = "This is my string dear?"
+        const file = new File([str],'name',{type:'text/plain'});
+        const h = new Headers();
+        console.log(h);
+        const fd = new FormData();
+        fd.append('name','ali');
+        console.log(fd);
+        const req = new Request(file,{
+            // headers: h,
+            body: fd,
+            mode: "no-cors",
+            method: "POST"
+        })
+
+        fetch(req).then(res => res.text()).then(str => console.log(str))
+    </script>
+    
+</body>
+</html>

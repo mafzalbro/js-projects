@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiper Js</title>
+
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <h1>Welcome</h1>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide card">
+                <div class="thumbnail">
+                    <img src="/images/img1.jpg" alt="thumb" />
+                </div>
+                <div class="description">
+                    <h2>This is Heading 1!</h2>
+                    <p>Let's discuss with paragraphs and work in clear way!</p>
+                </div>
+            </div>
+
+            <div class="swiper-slide card">
+                <div class="thumbnail">
+                    <img src="/images/img2.jpg" alt="thumb" />
+                </div>
+                <div class="description">
+                    <h2>This is Heading 2!</h2>
+                    <p>Let's discuss with paragraphs and work in clear way!</p>
+                </div>
+            </div>
+
+            <div class="swiper-slide card">
+                <div class="thumbnail">
+                    <img src="/images/img3.jpg" alt="thumb" />
+                </div>
+                <div class="description">
+                    <h2>This is Heading 3!</h2>
+                    <p>Let's discuss with paragraphs and work in clear way!</p>
+                </div>
+            </div>
+
+            <div class="swiper-slide card">
+                <div class="thumbnail">
+                    <img src="/images/img4.jpg" alt="thumb" />
+                </div>
+                <div class="description">
+                    <h2>This is Heading 4!</h2>
+                    <p>Let's discuss with paragraphs and work in clear way!</p>
+                </div>
+            </div>
+
+            <div class="swiper-slide card">
+                <div class="thumbnail">
+                    <img src="/images/img5.jpg" alt="thumb" />
+                </div>
+                <div class="description">
+                    <h2>This is Heading 5!</h2>
+                    <p>Let's discuss with paragraphs and work in clear way!</p>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="swiper-scrollbar"></div>
+        <div class="swiper-pagination"></div>
+
+    </div>
+
+
+
+
+    <script>
+        let swiper = new Swiper('.swiper',{
+            direction: 'vertical',
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            scrollbar: {
+               el: '.swiper-scrollbar',
+            },  
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+</body>
+
+</html>

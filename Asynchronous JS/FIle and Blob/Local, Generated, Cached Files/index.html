@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local, Generated, and Cached Files</title>
+</head>
+<body>
+    <h1>Handling Local, Generated, and Cached Files: Moving, Copying, and Saving</h1>
+    <h2>Current File: <span class="title"></span></h2>
+    <p class="formbox">
+        <label for="inputImage">Pick Image</label>
+        <input type="file" accept="Image/*" id="inputImage">
+    </p>
+    <p class="formbox">
+        <label for="inputJSON">Pick JSON</label>
+        <input type="file" accept="application/json,.json,text/json" id="inputJSON">
+    </p>
+
+    <p id="actions">
+        <button id="btnResponse">Put file in Response</button>
+        <button id="btnCache">Put Response in Cache</button>
+        <button id="btnDisplayLocal">Display Current Local File</button>
+        <button id="btnDisplayCache">Display Last File from Caches</button>
+        <button id="btnDisplayCanvas">Display and Cache Canvas Image</button>
+        <button id="btnGenAndSave">Generate JSON File and Save Locally</button>
+    </p>
+
+    <p>
+        The Canvas Element
+        <canvas id="canvas" width="200" height="200"></canvas>
+        Drawn after DOM content Loaded
+    </p>
+    <pre id="outputJSON"></pre>
+    <p id="outputImage">
+
+    </p>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

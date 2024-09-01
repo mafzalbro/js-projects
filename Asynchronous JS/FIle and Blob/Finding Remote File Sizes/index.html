@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finding Remote File Sizes</title>
+</head>
+<body>
+    <h1>Finding Remote File Sizes</h1>
+
+
+    <script>
+        let base = 'http://127.0.0.1:5500/index.html'
+        let smallImg = `${base}/250-400.png`
+        let mediumImg = `${base}/400-800.png`
+        let largeImg = `${base}/880-1200.png`
+
+        const options = {
+            method : 'HEAD'
+        }
+        let fileSizes = {} //object of storing alll file Sizes
+        Promise.all([
+            fetch(smallImg,options),
+            fetch(mediumImg,options),
+            fetch(largeImg,options)
+        ]).then(responses => {
+            for (const response of responses) {
+            fileSizes[new URL(response.url).pathname] = response.headers.get('content-length')
+            // console.log(new URL(response.url).pathname);
+            // console.log(response.headers.get('content-length'));
+            console.log(fileSizes[new URL(response.url).pathname]);
+            }
+        })
+        
+        console.log(fileSizes);
+    </script>
+
+    
+</body>
+</html>

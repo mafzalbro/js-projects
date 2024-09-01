@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Response Object</title>
+</head>
+<body>
+    <h1>Create Response Object</h1>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded',init)
+        function init() {
+            createJsonResponse()
+            createImageResponse()
+        }
+        // create object and Json.stringify
+        const createJsonResponse = async () => {
+        const obj = {   
+            name: 'Ali',
+            id: 1,
+            subject: 'Arabic'
+        }
+        const json = JSON.stringify(obj);
+
+        //create a file
+
+        const file = new File([json],'file.json',{type: 'application/json'});
+
+        //write response method and add this file
+        //.clone method
+        const response = new Response(file,{
+            status: 200,
+            statusText: 'good',
+            headers: {
+                'content-type': file.type,
+                'content-length': file.size
+            }
+        });
+        console.log(response);
+        //why copy? as we cannot send same response to server and save in caches so, 1 for cache 2nd for server
+        const copy = response.clone();
+        console.log(copy);
+        const content = await copy.json();
+        console.log(content);
+        const objDiv = document.createElement('div');
+        objDiv.textContent = JSON.stringify(content);
+        objDiv.style.padding = '20px'
+        document.body.append(objDiv)
+
+    }
+    
+    const createImageResponse = () => {
+        const input = document.createElement('input')
+        input.type = 'file'
+        input.accept = 'image/*'
+
+        document.body.append(input);
+        
+        input.addEventListener('change',uploadImg)
+        
+        async function uploadImg(ev){
+            ev.preventDefault();
+            
+            let input = ev.target;
+            let file = input.files[0]
+            
+            let response = new Response(file,{
+                status: 200,
+                statusText: 'good',
+                headers: {
+                    'content-type': file.type,
+                    'content-length': file.size
+                }
+            });
+            let copy = response.clone()
+            // console.log(copy);
+            let blob = await copy.blob()
+            // console.log(blob);
+
+            let url = URL.createObjectURL(blob)
+            let img = new Image()
+            img.src = url;
+            img.width = '400'
+            img.onload = ()=>{
+                document.body.append(img)
+            }
+        }
+    }
+    document.addEventListener('click',(ev)=>{
+        if(ev.target != (document.querySelector('input'))){
+          document.querySelector('input').click()
+        }
+        })
+ 
+    </script>
+</body>
+</html>
